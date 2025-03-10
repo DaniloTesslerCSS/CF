@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "ECS Web POC Project"
+
+Resources:
+
+  ECSCluster:
+      Type: "AWS::ECS::Cluster"
+      Properties:
+          ClusterName: "test-integration"
+          CapacityProviders: 
+            - "FARGATE"
+            - "FARGATE_SPOT"
+
+  Namespace :
+      Type: "AWS::ServiceDiscovery::HttpNamespace"
+      Properties:
+          Name: !Sub "test-integration"
